@@ -409,6 +409,9 @@ public class RNFSManager extends ReactContextBaseJavaModule {
         while ((length = in.read(buffer)) > 0) {
           out.write(buffer, 0, length);
           Thread.yield();
+          if (length < buffer.length) { 
+            break;
+          }
         }
         in.close();
         out.close();
